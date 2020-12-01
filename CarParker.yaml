@@ -1,0 +1,31 @@
+behaviors:
+    CarParker:
+        trainer_type: ppo
+        hyperparameters:
+            batch_size: 256
+            buffer_size: 2048
+            learning_rate: 3.0e-4
+            beta: 1.0e-2
+            num_epoch: 3
+        network_settings:
+            vis_encoder_type: simple
+            normalize: false
+            hidden_units: 256
+            num_layers: 3
+        reward_signals:
+            extrinsic:
+                strength: 1.0
+                gamma: 0.99
+            curiosity:
+                strength: 0.02
+                gamma: 0.99
+                encoding_size: 256
+            # gail:
+            #     strength: 0.02
+            #     gamma: 0.99
+            #     encoding_size: 128
+            #     use_actions: true
+            #     demo_path: D:/CSCI 527/Unity/ParkingMania/Assets/Demonstrations/MyDemo.demo
+        summary_freq: 30000
+        time_horizon: 512
+        max_steps: 1.0e7
